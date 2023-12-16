@@ -6,11 +6,11 @@ services:
       context: ./bin/aapanel
     container_name: "aapanel"
     #ports:
-      - 9999:7800
-      - 8080:80
-      - 4433:443
-      - 888:888
-      - 6379:6379
+    #  - 9999:7800
+    #  - 8080:80
+    #  - 4433:443
+    #  - 888:888
+    #  - 6379:6379
     restart: always
     #volumes: 
     #  - ./:/www/wwwroot
