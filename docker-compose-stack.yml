@@ -1,0 +1,29 @@
+version: "3"
+
+services:
+  aapanel:
+    build: 
+      context: ./bin/aapanel
+    container_name: "aapanel"
+    #ports:
+      - 9999:7800
+      - 8080:80
+      - 4433:443
+      - 888:888
+      - 6379:6379
+    restart: always
+    #volumes: 
+    #  - ./:/www/wwwroot
+
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.aapanel.rule=Host(`02.afcode.online`)"
+      - "traefik.http.routers.aapanel.entrypoints=web,websecure"
+      - "traefik.http.services.aapanel.loadbalancer.server.port=7800"
+      - "traefik.http.routers.aapanel.service=aapanel"
+      - "traefik.http.routers.aapanel.tls.certresolver=leresolver"
+
+networks:
+  default:
+    name: portainer_default
+    external: true
